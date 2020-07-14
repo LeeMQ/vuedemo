@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind 绑定</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind 绑定</h1>
+    <hr>
+    <div id="app">
+       <p><img v-bind:src="imgSrc" width="350px"></p>
+       <p><a :href="webUrl" target="_blank">球球</a></p>
+       <hr>
+       <div :class="className">绑定class</div> 
+       <div :class="{classA:isOk}">绑定class中的判断</div> 
+       <div :class="[classA,classB]">绑定class中的数组</div> 
+       <div :class="isOk?classA:classB">绑定class中的判断 三元运算符</div> 
+       <hr>
+       <div>
+           <input type="checkbox" id="isOk" v-model="isOk">
+           <label for="isOk">isOK={{isOk}}</label>
+       </div>
+       <div :style="{color:red,fontSize:font}">绑定style值</div>
+       <div :style="styleObject">用对象方法绑定style的值</div>
+    </div>
+    <style>
+       .classA{
+           color: rgb(76, 65, 225);
+       }
+       .classB{
+           font-size: 150%;
+       }
+    </style>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                imgSrc:' https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1594695040&di=8a1830dda99fa1c3ff3a471d1722c4c1&src=http://b-ssl.duitang.com/uploads/item/201809/01/20180901223821_zxvxy.jpeg',
+                webUrl:'https://leemq.github.io/',
+                className:'classA',
+                isOk:false,
+                classA:'classA',
+                classB:'classB',
+                red:'red',
+                font:'20px',
+                styleObject:{
+                    color:'green',
+                    fontSize:'36px'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
