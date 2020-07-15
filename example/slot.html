@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+</head>
+<body>
+    <h1>slot</h1>
+    <hr>
+    <div id="app">
+      <qiu>
+          <span slot="blogUrl">{{qiuData.blogUrl}}</span>
+          <span slot="netName">{{qiuData.netName}}</span>
+          <span slot="skill">{{qiuData.skill}}</span>
+      </qiu>
+    </div>
+    <template id="tem">
+       <div>
+        <p>博客地址：<slot name="blogUrl"></slot></p>
+        <p>网名：<slot name="netName"></slot></p>
+        <p>技术类型：<slot name="skill"></slot></p>
+       </div>
+    </template>
+
+    <script type="text/javascript">
+        var qiu = {
+            template:"#tem"
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+                qiuData:{
+                    blogUrl:'https://leemq.github.io/',
+                    netName:'qiu',
+                    skill:'web-blog'
+                }
+            },
+            components: {
+                "qiu":qiu
+            }
+        })
+    </script>
+</body>
+</html>
